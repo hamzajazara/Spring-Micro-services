@@ -1,0 +1,25 @@
+server:  
+  port: ${PORT:8081}
+
+zuul:
+  prefix: /api
+  routes:
+    available-hotels: 
+      path: /available-hotels/**
+      serviceId: available-hotels
+    best-hotels: 
+      path: /best-hotels/**
+      serviceId: best-hotels
+    crazy-hotels: 
+      path: /crazy-hotels/**
+      serviceId: crazy-hotels
+
+ribbon:
+  eureka:
+    enabled: true
+    
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8080/eureka/
+    registerWithEureka: false
